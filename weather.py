@@ -28,6 +28,7 @@ device = max7219(serial, cascaded=4, block_orientation=-90, rotate=0)
 
 def get_temp(city):
     global temp
+    global weather
     while True:
         print('starting request...')
         try:
@@ -39,6 +40,7 @@ def get_temp(city):
         if 'message' in body:
             raise ValueError(body['message'])
         temp = str(round(body['main']['temp'], 1))
+        weather = body['weather'][0]
         time.sleep(15 * 60)
 
 def temp_width(temp):
@@ -77,16 +79,21 @@ def draw_loader(progress, draw):
 
 def display():
     progress = 0
+    show_temp = True
     while True:
-        if 'temp' in globals():
+        if 'temp' in globals() and 'weather' in globals():
             str_width = temp_width(temp) + 1
             circle_width = 4
             total_offset = (32 - (str_width + circle_width)) / 2
             circle_offset = str_width + total_offset
             with canvas(device) as draw:
-                text(draw, (total_offset, 0), temp, fill="white", font=proportional(LCD_FONT))
-                draw_circle(circle_offset, draw)
-            time.sleep(5)
+                if show_temp:
+                    text(draw, (total_offset, 0), temp, fill="white", font=proportional(LCD_FONT))
+                    draw_circle(circle_offset, draw)
+                else:
+                    text(draw, (0, 0), weather['description'], fill="white", font=proportional(TINY_FONT))
+            time.sleep(3)
+            show_temp = not show_temp
         else:
             with canvas(device) as draw:
                 draw_loader(progress, draw)
