@@ -18,10 +18,10 @@ from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
-app_key = os.environ.get('APP_KEY')
+app_key = os.environ.get('APP_KEY_WEATHER')
 
 if app_key is None:
-    raise ValueError('APP_KEY in .env file is required')
+    raise ValueError('APP_KEY_WEATHER in .env file is required')
 
 serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, cascaded=4, block_orientation=-90, rotate=0)
