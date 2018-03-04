@@ -9,6 +9,7 @@ import thread
 import time
 import sys
 
+from datetime import date
 from difflib import SequenceMatcher
 from os.path import join, dirname
 from dotenv import load_dotenv
@@ -59,7 +60,10 @@ def get_team_code(team_name, teams):
     return str_to_ascii(team_name).upper()[:3]
 
 def get_live_standings(league, teams):
-    url = 'http://www.kicker.de/news/fussball{0}/2017-18/spieltag.html'.format(league['live'])
+    today = date.today()
+    start_year = today.year - 1 if today < date(today.year, 7, 1) else today.year # 2017
+    end_year = (start_year + 1) % 100 # 18
+    url = 'http://www.kicker.de/news/fussball{0}/{1}-{2}/spieltag.html'.format(league['live'], start_year, end_year)
     res = requests.get(url)
     html = res.content
     soup = BeautifulSoup(html, "html.parser")
