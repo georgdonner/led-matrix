@@ -1,0 +1,62 @@
+[
+  {
+    "code": "BL1",
+    "live": "/bundesliga/spieltag/1-bundesliga",
+    "id": 452
+  },
+  {
+    "code": "BL2",
+    "live": "/2bundesliga/spieltag/2-bundesliga",
+    "id": 453
+  },
+  {
+    "code": "BL3",
+    "live": "/3liga/spieltag/3-liga",
+    "id": null
+  },
+  {
+    "code": "DFB",
+    "live": "/dfbpokal/spielrunde/dfb-pokal",
+    "id": 458
+  },
+  {
+    "code": "PL",
+    "live": "/intligen/england/barclays-premier-league",
+    "id": 445
+  },
+  {
+    "code": "ELC",
+    "live": "/intligen/intwettbewerbe/championship",
+    "id": 446
+  },
+  {
+    "code": "FAC",
+    "live": "/intligen/intpokale/fa-cup",
+    "id": null
+  },
+  {
+    "code": "SA",
+    "live": "/intligen/italien/serie-a-tim",
+    "id": 456
+  },
+  {
+    "code": "PD",
+    "live": "/intligen/spanien/liga-bbva",
+    "id": 455
+  },
+  {
+    "code": "FL1",
+    "live": "/intligen/frankreich/ligue-1-orange",
+    "id": 450
+  },
+  {
+    "code": "CL",
+    "live": "/chleague/spielrunde/champions-league",
+    "id": 464
+  },
+  {
+    "code": "EL",
+    "live": "/uefa/spielrunde/europa-league",
+    "id": null
+  }
+]
